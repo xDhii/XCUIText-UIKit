@@ -27,13 +27,13 @@ class MainHelper: MainAppTests {
 
 		let predicate = NSPredicate(format: "label CONTAINS[c] %@", message)
 		let result = app.staticTexts.containing(predicate)
-		let element = XCUIApplication().staticTexts[result.element.firstMatch.label]
+		let element = app.staticTexts[result.element.firstMatch.label]
 		waitElement(element: element)
 	}
 
 	func waitLoadingDissappear() {
 		sleep(2)
-		let element = XCUIApplication().activityIndicators["Em andamento"]
+		let element = app.activityIndicators["Em andamento"]
 		let exists = NSPredicate(format: "exists == 0")
 
 		expectation(for: exists, evaluatedWith: element, handler: nil)
@@ -107,11 +107,24 @@ class MainHelper: MainAppTests {
 	}
 
 	func clickAgreement(identifier: String) {
-		let element = XCUIApplication().scrollViews.otherElements[identifier]
+		let element = app.scrollViews.otherElements[identifier]
 		element.tap()
 	}
 
-	// MARK: - Writte
+	// MARK: - Write
+
+	func getTextFieldValue(identifier: String) -> String {
+		let element = app.textFields[identifier]
+		element.tap()
+		return element.firstMatch.value as! String
+	}
+
+	func deleteTextFieldValue(identifier: String) {
+		let textFieldValue = getTextFieldValue(identifier: identifier)
+		for i in 0..<textFieldValue.count {
+			app.keys["delete"].tap()
+		}
+	}
 
 	func sendKeysNamesTextField(identifier: String, value: String) {
 		let element = app.textFields[identifier]
@@ -169,5 +182,11 @@ class MainHelper: MainAppTests {
 		let text = app.staticTexts[identifier]
 		waitElement(element: text)
 		XCTAssert(text.exists)
+	}
+
+	func checkTextFieldExist(identifier: String) {
+		let textField = app.textFields[identifier]
+		waitElement(element: textField)
+		XCTAssert(textField.exists)
 	}
 }
