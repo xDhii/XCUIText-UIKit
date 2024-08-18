@@ -96,6 +96,17 @@
                ReferencedContainer = "container:LoginExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC82FB162C71778900E827A7"
+               BuildableName = "LoginUITests.xctest"
+               BlueprintName = "LoginUITests"
+               ReferencedContainer = "container:LoginExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
