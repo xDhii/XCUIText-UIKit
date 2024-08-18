@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-class MainHelper: MainAppTests {
+class MainUIHelper: MainAppTests {
 	let elementsQuery = XCUIApplication().scrollViews.otherElements
 	let collectionView = XCUIApplication().collectionViews
 
@@ -121,7 +121,7 @@ class MainHelper: MainAppTests {
 
 	func deleteTextFieldValue(identifier: String) {
 		let textFieldValue = getTextFieldValue(identifier: identifier)
-		for i in 0..<textFieldValue.count {
+		for _ in 0..<textFieldValue.count {
 			app.keys["delete"].tap()
 		}
 	}
