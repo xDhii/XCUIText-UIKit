@@ -10,19 +10,14 @@ import XCTest
 
 final class LoginTest: MainAppTests {
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-		var component: XCUIElement
-		component = app.staticTexts["welcome_txt"]
-		XCTAssertTrue(component.exists)
-		app.textFields["login_username"].tap()
-		app.textFields["login_username"].typeText("test_username")
-		app.textFields["login_password"].tap()
-		app.textFields["login_password"].typeText("test_password")
-		app.buttons["login_button"].tap()
-		sleep(5)
+	let loginPage = LoginPage()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testExample() throws {
+        
+		loginPage.validateHomeText()
+		loginPage.writeUserEmail()
+		loginPage.writeUserPassword()
+		loginPage.clickContinueButton()
     }
 
     func testLaunchPerformance() throws {
