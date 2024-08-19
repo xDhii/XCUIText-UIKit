@@ -189,4 +189,10 @@ class MainUIHelper: MainAppTests {
 		waitElement(element: textField)
 		XCTAssert(textField.exists)
 	}
+
+	func checkButtonIsEnabled(identifier: String) {
+		let button = app.buttons[identifier]
+		waitElement(element: button)
+		XCTAssert(button.isEnabled)
+	}
 }

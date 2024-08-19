@@ -13,26 +13,35 @@ class LoginPage {
 	let helper = MainUIHelper()
 
 	func validateHomeText() {
-		helper.checkTextExist(identifier: "welcome_txt")
+		let identifier = "welcome_txt"
+		helper.checkTextExist(identifier: identifier)
 	}
 
 	func writeUserEmail() {
-		helper.checkTextFieldExist(identifier: "login_username")
-		helper.sendKeysNamesTextField(identifier: "login_username", value: "adriano.valumin@outlook.com")
-		let fieldValue = helper.getTextFieldValue(identifier: "login_username")
-		XCTAssertEqual(fieldValue, "adriano.valumin@outlook.com")
+		let identifier = "login_username"
+		let inputValue = "adriano.valumin@outlook.com"
+		helper.checkTextFieldExist(identifier: identifier)
+		helper
+			.sendKeysNamesTextField(
+				identifier: identifier,
+				value: inputValue
+			)
+		let fieldValue = helper.getTextFieldValue(identifier: identifier)
+		XCTAssertEqual(fieldValue, inputValue)
 	}
 
 	func writeUserPassword() {
-		helper.checkTextFieldExist(identifier: "login_password")
-		helper.sendKeysNamesTextField(identifier: "login_password", value: "123456")
-		let fieldValue = helper.getTextFieldValue(identifier: "login_password")
+		let identifier = "login_password"
+		helper.checkTextFieldExist(identifier: identifier)
+		helper.sendKeysNamesTextField(identifier: identifier, value: "123456")
+		let fieldValue = helper.getTextFieldValue(identifier: identifier)
 		XCTAssertEqual(fieldValue, "123456")
 	}
 
 	func clickContinueButton() {
-		helper.checkBtnExist(identifier: "login_button")
-		helper.tapElementButton(identifier: "login_button")
+		let idenfitier = "login_button"
+		helper.checkBtnExist(identifier: idenfitier)
+		helper.checkButtonIsEnabled(identifier: idenfitier)
+		helper.tapElementButton(identifier: idenfitier)
 	}
-
 }
